@@ -114,10 +114,10 @@
     "data_loader_type": "InstanceLoader",
     "args": {
       "threshold_leven": {
-        "type": "range",
-        "max": 0.8,
-        "min": 0.4,
-        "step": 0.1
+		"type": "values",
+        "data": [
+          0.7
+        ]
       },
       "process_num": {
         "type": "values",
@@ -125,6 +125,12 @@
           4
         ]
       }
+    }
+  },
+  "LLMMatcher": {
+    "data_loader_type": "InstanceLoader",
+    "args": {
+
     }
   },
   "Coma": {

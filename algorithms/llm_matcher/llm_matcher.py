@@ -19,13 +19,12 @@ class LLMMatcher(BaseMatcher):
         Parameters
         ----------
         """
-        openai.api_key = ""
+        #openai.api_key = ""
 
     def get_matches(self, source: InstanceLoader, target: InstanceLoader, dataset_name: str):
 
-        matches = dict()
-        src_table = source.table.name
-        trg_table = target.table.name
+        src_table = source.table.name.replace("_source", "")
+        trg_table = target.table.name.replace("_target", "")
         src_columns = source.table.columns.items()
         trg_columns = target.table.columns.items()
 
@@ -62,6 +61,8 @@ class LLMMatcher(BaseMatcher):
 
         matches = {}
         for fk in fks:
-            matches[(fk["table"], fk["column"]), (fk["referencedTable"], fk["referencedColumn"])] = 1.0
+            if any([val is None for val in fk.values()]):
+                continue
+            matches[(fk["table"]+"_source", fk["column"]), (fk["referencedTable"]+"_target", fk["referencedColumn"])] = 1.0
 
         return matches
