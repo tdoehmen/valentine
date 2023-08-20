@@ -41,7 +41,7 @@ class InstanceLoader(BaseLoader):
         assert self.data_path, 'Data path not set for Instance Loader'
         table_df = pd.read_csv(self.data_path,
                                index_col=False,
-                               encoding=get_encoding(self.data_path),
+                               encoding='utf-8',
                                sep=get_delimiter(self.data_path)).fillna('')
         table_name = self.data_path.split("/")[-1].split(".")[0]
         self.table = Table(table_name, table_df)
