@@ -190,6 +190,17 @@
         ]
       }
     }
+  },
+  "LLMMatcherReplay": {
+    "data_loader_type": "InstanceLoader",
+    "args": {
+      "replay_file": {
+        "type": "values",
+        "data": [
+          "/home/tdoehmen/schema-pile/src/training/foreign_key_detection/responses_gpt35_bird.json"
+        ]
+      }
+    }
   }
 }
 

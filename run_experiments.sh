@@ -14,7 +14,8 @@ algorithm_name=$1
 num_jobs=$2
 
 if [[ "$algorithm_name" = 'SimilarityFlooding' ]] || [[ "$algorithm_name" = 'CorrelationClustering' ]] || \
-[[ "$algorithm_name" = 'JaccardLevenMatcher' ]] || [[ "$algorithm_name" = 'Coma' ]] || [[ "$algorithm_name" = 'EmbDI' ]]
+[[ "$algorithm_name" = 'JaccardLevenMatcher' ]] || [[ "$algorithm_name" = 'Coma' ]] || [[ "$algorithm_name" = 'EmbDI' ]] || \
+[[ "$algorithm_name" = 'LLMMatcherReplay' ]]
 then
   parallel --will-cite  --jobs "$num_jobs" -u python run_job.py -c ::: configuration_files/"$algorithm_name"/*/*
 elif [[ "$algorithm_name" = 'Cupid' ]]
