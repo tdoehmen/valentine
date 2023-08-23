@@ -43,8 +43,8 @@ class LLMMatcherReplay(BaseMatcher):
         col_src_name = self.get_original_column_name(prediction_column, source.table.columns.keys())
         col_trg_name = self.get_original_column_name(prediction_referenced_column, target.table.columns.keys())
 
-        src_table = source.table.name
-        trg_table = target.table.name
+        src_table = (source.table.name).replace("source_", "")
+        trg_table = (target.table.name).replace("target_", "") 
 
         matches = dict()
         if col_src_name and col_trg_name:
